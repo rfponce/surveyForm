@@ -43,8 +43,23 @@ const form = document.getElementById("survey-form");
 
 form.addEventListener("submit", function(event)
 {
-  console.log(event); 
-  captureInformation(); 
-  event.preventDefault()
+  const windowsCheckbox = document.querySelector("input[name='os'][value='windows']").checked;
+  const linuxCheckbox = document.querySelector("input[name='os'][value='linux']").checked;
+  const macosCheckbox = document.querySelector("input[name='os'][value='macos']").checked;
+  const otherOsCheckbox = document.querySelector("input[name='os'][value='other']").checked;
+  
+  event.preventDefault();
+  
+  if(windowsCheckbox || linuxCheckbox || macosCheckbox || otherOsCheckbox) // if any of them is checked
+  {
+    captureInformation(); 
+  }
+  else
+  {
+    const osCheckboxsField = document.querySelector("#osField");
+
+    osCheckboxsField.style.border = "4px solid red";
+    alert("Please select an operating system.");
+  }
 }
 );
