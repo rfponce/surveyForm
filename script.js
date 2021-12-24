@@ -23,7 +23,6 @@ function captureInformation()
   }
 
   if(comment) info += "Comment: " + comment + "\n";
-  alert(info);
 
   console.log(info);
 }
@@ -40,6 +39,12 @@ function depuracion() // *** For debugging purposes only ***
   document.getElementById("comments").value = "Nothing to add...";
 }
 
-const buttonSubmit = document.getElementById("send");
+const form = document.getElementById("survey-form");
 
-buttonSubmit.addEventListener("submit", function(event){console.log(event); captureInformation()});
+form.addEventListener("submit", function(event)
+{
+  console.log(event); 
+  captureInformation(); 
+  event.preventDefault()
+}
+);
