@@ -104,6 +104,13 @@
     font-size: inherit;
 }
 
+#send:hover
+{
+    background-color: var(--highlightColor);
+    border-color: var(--highlightColor);
+    cursor: pointer;
+}
+
 footer
 {
     font-family: var(--font);
