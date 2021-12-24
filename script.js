@@ -1,6 +1,6 @@
 function captureInformation()
 {
-  const name = document.getElementById("name").value;
+  const fullName = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const age = document.getElementById("number").value;
   const sex = document.querySelector("input[name='sex']:checked").value;
@@ -8,9 +8,9 @@ function captureInformation()
   const osList = document.querySelectorAll("input[name='os']:checked");
   const comment = document.getElementById("comments").value;
   let info = "";
-
+  
   info += "Your information was...\n";
-  info += "Name: " + name + "\n";
+  info += "Name: " + fullName + "\n";
   info += "Email: " + email + "\n";
   if(info) info += "Age: " + age + "\n";
   info += "Sex: " + sex + "\n";
@@ -23,14 +23,23 @@ function captureInformation()
   }
 
   if(comment) info += "Comment: " + comment + "\n";
-  return info;
+  alert(info);
+
+  console.log(info);
 }
 
-function showAlert()
+function depuracion() // *** For debugging purposes only ***
 {
-  return alert(captureInformation());
+  document.getElementById("name").value = "Juan Pérez";
+  document.getElementById("email").value = "hola@fabianponce.dev";
+  document.getElementById("number").value = "41";
+  document.querySelector("input[value='male']").checked = true;
+  document.getElementById("dropdown").value = "yes";
+  document.querySelector("input[name='os'][value='windows']").checked = true;
+  document.querySelector("input[name='os'][value='linux']").checked = true;
+  document.getElementById("comments").value = "Nothing to add...";
 }
 
 const buttonSubmit = document.getElementById("send");
 
-buttonSubmit.addEventListener("click", showAlert);
+buttonSubmit.addEventListener("submit", function(event){console.log(event); captureInformation()});
