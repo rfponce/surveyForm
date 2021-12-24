@@ -1,31 +1,36 @@
-// const buttonSubmit = document.getElementById("buttonSubmit");
+function captureInformation()
+{
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const age = document.getElementById("number").value;
+  const sex = document.querySelector("input[name='sex']:checked").value;
+  const ownMoreComputers = document.getElementById("dropdown").value;
+  const osList = document.querySelectorAll("input[name='os']:checked");
+  const comment = document.getElementById("comments").value;
+  let info = "";
 
-// buttonSubmit.addEventListener("click", alert(captureInformation()));
+  info += "Your information was...\n";
+  info += "Name: " + name + "\n";
+  info += "Email: " + email + "\n";
+  if(info) info += "Age: " + age + "\n";
+  info += "Sex: " + sex + "\n";
+  info += "Do you own more than one computer?: " + ownMoreComputers + "\n";
+  info += "Operating systems you use: \n";
 
-// function captureInformation()
-// {
-//   const name = document.getElementById("name").value;
-//   const email = document.getElementById("email").value;
-//   const age = document.getElementById("number").value;
-//   const sex = document.querySelector("input[name='sex']:checked").value;
-//   const ownMoreComputers = document.getElementById("dropdown").value;
-//   const osList = document.querySelectorAll("input[name='os']:checked");
-//   const comment = document.getElementById("comments").value;
-//   let message = "";
+  for(let i = 0; i < osList.length; i++)
+  {
+    info += "- " + osList[i].value + "\n";
+  }
 
-//   message += "Your information was...\n";
-//   message += "Name: " + name + "\n";
-//   message += "Email: " + email + "\n";
-//   if(message) message += "Age: " + age + "\n";
-//   message += "Sex: " + sex + "\n";
-//   message += "Do you own more than one computer?: " + ownMoreComputers + "\n";
-//   message += "Operating systems you use: \n";
+  if(comment) info += "Comment: " + comment + "\n";
+  return info;
+}
 
-//   for(let i = 0; i < osList.length; i++)
-//   {
-//     message += "- " + osList[i].value + "\n";
-//   }
+function showAlert()
+{
+  return alert(captureInformation());
+}
 
-//   if(comment) message += "Comment: " + comment + "\n";
-//   return message;
-// }
+const buttonSubmit = document.getElementById("send");
+
+buttonSubmit.addEventListener("click", showAlert);
